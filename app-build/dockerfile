@@ -30,6 +30,6 @@ CMD service nginx start && service php8.0-fpm start && tail -f /dev/null
 # Start Nginx when the container starts (depricated)
 #CMD ["nginx", "-g", "daemon off;"]
 
-# Build this image from this container > noscopev6/ubuntu-php-todo:k8s
+# Build this image from this container > noscopev6/k8-todoapp:1
 # this image will be used in the k8s deployment of todoapp and the external db is used . 
 # please change the db host and creds from the app file before build 
