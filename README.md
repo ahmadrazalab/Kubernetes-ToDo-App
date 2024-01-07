@@ -1,9 +1,7 @@
-## Project is hosted in k8s cluster with 1 master and 1 worker node (AWS)
+## TODO app deploy in K8 cluster using RDS/other as  DB connection  
 
 ## Application Structure
-- Application is hosted in worker node of k8 with 3-4 frontend container (ubuntu) and 1 backend container (mysql)
-
-
+- Application is hosted in worker node of k8 with 3-4 frontend container (ubuntu) and 1 backend DB (mysql)
 
 
 ## Application 

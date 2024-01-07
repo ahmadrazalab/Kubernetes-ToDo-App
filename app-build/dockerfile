@@ -1,0 +1,35 @@
+# Setup php enviroment inside docker file
+# Use the official Ubuntu as a parent image
+FROM ubuntu:latest
+
+# Update the package list and install necessary software
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php
+
+# Update the package list again
+RUN apt-get update
+
+# Install Nginx, PHP 8.0, and necessary extensions
+RUN apt-get install -y nginx php8.0-fpm php8.0-mysql
+
+RUN rm -rf /var/www/html/*
+RUN rm -rf  /etc/nginx/sites-available/default
+COPY ./nginx-default.conf /etc/nginx/sites-available/default
+
+
+# App Files Copy into the project directory
+COPY ./app-files/* /var/www/html/
+RUN chown -R www-data:www-data /var/www/html
+
+# Expose port 80 for Nginx
+EXPOSE 80
+
+# Start Nginx and PHP-FPM
+CMD service nginx start && service php8.0-fpm start && tail -f /dev/null
+
+# Start Nginx when the container starts (depricated)
+#CMD ["nginx", "-g", "daemon off;"]
+
+# Build this image from this container > noscopev6/ubuntu-php-todo:k8s
+# this image will be used in the k8s deployment of todoapp and the external db is used . 
+# please change the db host and creds from the app file before build 
