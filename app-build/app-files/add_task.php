@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $taskDate = $data->taskDate;
 //////////////////////////////////////////////////////////////////////////
     // Replace these values with your MySQL server configuration
-    $host = "192.168.91.23";      #  IP of k8 cluster host or Rds IP 
-    $username = "admin";
+    $host = "10.244.0.31";      #  IP of k8 cluster host or Rds IP 
+    $username = "root";
     $password = "password";
     $database = "todoapp";
 
