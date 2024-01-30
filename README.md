@@ -18,3 +18,10 @@ CREATE TABLE tasks (
     task_description TEXT,
     task_date DATE
 );
+
+
+
+# How to USE : 
+1- Modify the Application APP-files from the folder as per your UI and application configuration (MYSQL Creds Change )
+2- Build the Dockerimage from the Dockerfile (ALready Present) and Push the image to docker hub
+3- Update the Docker Image in the DeploymentFile and create pod of deployment and service from yaml files
