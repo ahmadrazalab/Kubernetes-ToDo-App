@@ -5,7 +5,7 @@ metadata:
   labels:
     app: todok8
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: todok8
@@ -17,11 +17,18 @@ spec:
       containers:
       - name: todok8
         image: noscopev6/k8-todoapp:1
+        resources: # Resource limit for the deployments 
+          requests:
+            memory: "500Mi"
+            cpu: "500m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
         ports:
         - containerPort: 80
         env:
         - name: DB_HOST
-          value: "192.168.91.23" # Replace with your actual host IP
+          value: "192.168.91.23" # Replace with your actual DB host IP or DB DNS name
         - name: DB_PORT
           value: "3306"
         - name: MYSQL_ROOT_PASSWORD
@@ -32,3 +39,7 @@ spec:
           value: admin
         - name: MYSQL_PASSWORD
           value: password
+
+# In this senario we are using external DB to store the todo app data 
+# or we can use the independent self hosted database in the kubernetes cluster 
+
